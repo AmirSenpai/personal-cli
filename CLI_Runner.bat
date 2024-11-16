@@ -19,12 +19,11 @@ timeout /t 2 /nobreak >nul
 :: Menu
 echo What would you like to do today?
 echo [1] Open Amir's Portfolio
-echo [2] Open VsCode Installer
-echo [3] Open ToDo List
-echo [4] Tell Time and Date
-echo [5] Play a Fun Game
-echo [6] Show System Info.
-echo [7] Exit
+echo [2] Open ToDo List Website
+echo [3] Tell Time and Date
+echo [4] Play a Fun Game
+echo [5] Open Advanced Menu [requires running the cli on Administrator]
+echo [6] Exit
 set /p choice=Enter your choice (1/2/3/4/5/6): 
 
 if "%choice%"=="1" (
@@ -32,30 +31,24 @@ if "%choice%"=="1" (
 	goto START
 )
 if "%choice%"=="2" (
-    start vscodeinstall.exe
-	goto START
-)
-if "%choice%"=="3" (
     start https://amirsenpai.github.io/ToDo-list-website-amir/
     goto START
 )
-if "%choice%"=="4" (
+if "%choice%"=="3" (
     timeout /t 1 /nobreak >nul
     date /t
     time /t
     pause
 )
-if "%choice%"=="5" (
+if "%choice%"=="4" (
     echo Starting a fun game...
     timeout /t 2 /nobreak >nul
     goto game
 )
-if "%choice%"=="6" (
-    systeminfo
-    timeout /t 2 /nobreak >nul
-    pause
+if "%choice%"=="5" (
+	goto SECONDMENU
 )
-if "%choice%"=="7" (
+if "%choice%"=="6" (
     echo Bye! Have a great day!
     timeout /t 2 /nobreak >nul
     exit
@@ -76,3 +69,42 @@ if "%guess%"=="%number%" (
 )
 Pause
 exit
+
+:SECONDMENU
+cls
+echo welcome to Adv. Menu
+timeout /t 1 /nobreak >nul
+
+:: second menu choices
+echo What would you like to do today?
+echo [1] Open System Info
+echo [2] Open vscdoe webp
+echo [3] Show IP Add.
+echo [4] Open CMD
+echo [5] Back to previous menu
+set /p choice2=Enter your choice (1/2/3/4): 
+
+if "%choice2%"=="1" (
+    systeminfo
+    timeout /t 2 /nobreak >nul
+    pause
+)
+if "%choice2%"=="2" (
+    start https://vscode.dev
+    goto SECONDMENU
+)
+if "%choice2%"=="3" (
+    ipconfig
+    pause
+    goto SECONDMENU
+)
+if "%choice2%"=="4" (
+    start cmd.exe
+    goto SECONDMENU
+)
+if "%choice2%"=="5" (
+    cls
+    goto START
+)
+echo Invalid choice. Please try again.
+goto SECONDMENU
