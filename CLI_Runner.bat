@@ -15,6 +15,7 @@ echo.
 :: Pause for effect
 echo Welcome!
 timeout /t 2 /nobreak >nul
+echo.
 
 :: Menu
 echo What would you like to do today?
@@ -54,6 +55,7 @@ if "%choice%"=="6" (
     exit
 )
 echo Invalid choice. Please try again.
+timeout /t 1 /nobreak >nul
 goto START
 
 :game
@@ -72,8 +74,18 @@ exit
 
 :SECONDMENU
 cls
+:: ASCII welcome message
+echo ===========================================================
+echo                   WELCOME TO AMIR'S CLI                  
+echo ===========================================================
+echo.
+
+
+::Welcome Message
 echo welcome to Adv. Menu
 timeout /t 1 /nobreak >nul
+echo.
+
 
 :: second menu choices
 echo What would you like to do today?
