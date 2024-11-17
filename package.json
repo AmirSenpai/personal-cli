@@ -1,0 +1,11 @@
+{
+  "name": "personal_cli",
+  "version": "2.0.0",
+  "description": "A personal cli for updating/installin packages and apps, system information and ...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AmirSenpai",
+  "license": "ISC"
+}
