@@ -6,6 +6,8 @@
 <img src="https://img.shields.io/badge/Personal-violet" />
 <img src="https://img.shields.io/github/stars/AmirSenpai/personal-cli"/>
 <img src="https://media.publit.io/file/Screenshot-6-A.png"/>
+<img src="https://img.shields.io/github/package-json/v/AmirSenpai/personal-cli"/>
+
 </h1>
 
 ### what is it?
