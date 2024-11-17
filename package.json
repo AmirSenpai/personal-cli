@@ -1,6 +1,6 @@
 {
   "name": "personal_cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A personal cli for updating/installing packages and apps, system information and ...",
   "main": "index.js",
   "scripts": {
