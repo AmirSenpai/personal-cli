@@ -1,5 +1,10 @@
 @echo off
 
+color 0A
+echo ===========================================================
+echo                       Installer CLI                  
+echo ===========================================================
+echo.
 :START
 cls
 echo What would you like to do?

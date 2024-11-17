@@ -92,7 +92,7 @@ echo What would you like to do today?
 echo [1] Open System Info
 echo [2] Open vscdoe webp
 echo [3] Show IP Add.
-echo [4] Open CMD
+echo [4] Open Installer CLI
 echo [5] Back to previous menu
 set /p choice2=Enter your choice (1/2/3/4): 
 
@@ -111,7 +111,8 @@ if "%choice2%"=="3" (
     goto SECONDMENU
 )
 if "%choice2%"=="4" (
-    start cmd.exe
+    cd installercli
+    start installer.bat
     goto SECONDMENU
 )
 if "%choice2%"=="5" (
