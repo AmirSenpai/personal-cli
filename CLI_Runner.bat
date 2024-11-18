@@ -20,7 +20,7 @@ echo.
 :: Menu
 echo What would you like to do today?
 echo [1] Open Amir's Portfolio
-echo [2] Open ToDo List Website
+echo [2] Amir's Socials
 echo [3] Tell Time and Date
 echo [4] Play a Fun Game
 echo [5] Open Advanced Menu [requires running the cli on Administrator]
@@ -32,8 +32,14 @@ if "%choice%"=="1" (
 	goto START
 )
 if "%choice%"=="2" (
-    start https://amirsenpai.github.io/ToDo-list-website-amir/
-    goto START
+    echo.
+    echo Telegram: https://t.me/itsdekusenpai
+    echo.
+    echo BlueSky: amirdeku.bsky.social
+    echo.
+    echo Gmail: itsdekusenpai@gmail.com
+    echo.
+    pause
 )
 if "%choice%"=="3" (
     timeout /t 1 /nobreak >nul
