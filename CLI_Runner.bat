@@ -6,54 +6,48 @@ cls
 title Welcome to Amir's Personal CLI
 color 0A
 
-:: ASCII welcome message
-echo ===========================================================
-echo                   WELCOME TO AMIR'S CLI                  
-echo ===========================================================
-echo.
-
-:: Pause for effect
-echo Welcome!
+call :ascii_art
+echo Welcome to Amir's CLI!
 timeout /t 2 /nobreak >nul
-echo.
 
-:: Menu
+:: Main Menu
+:MAINMENU
+cls
+call :ascii_art
 echo What would you like to do today?
 echo [1] Open Amir's Portfolio
 echo [2] Amir's Socials
 echo [3] Tell Time and Date
 echo [4] Play a Fun Game
-echo [5] Open Advanced Menu [requires running the cli on Administrator]
+echo [5] Open Advanced Menu [requires Administrator]
 echo [6] Exit
 set /p choice=Enter your choice (1/2/3/4/5/6): 
 
 if "%choice%"=="1" (
     start https://github.com/amirsenpai
-	goto START
+    goto MAINMENU
 )
 if "%choice%"=="2" (
-    echo.
+    cls
     echo Telegram: https://t.me/itsdekusenpai
-    echo.
     echo BlueSky: amirdeku.bsky.social
-    echo.
     echo Gmail: itsdekusenpai@gmail.com
-    echo.
     pause
+    goto MAINMENU
 )
 if "%choice%"=="3" (
-    timeout /t 1 /nobreak >nul
+    cls
+    echo Current Date and Time:
     date /t
     time /t
     pause
+    goto MAINMENU
 )
 if "%choice%"=="4" (
-    echo Starting a fun game...
-    timeout /t 2 /nobreak >nul
-    goto game
+    goto GAME
 )
 if "%choice%"=="5" (
-	goto SECONDMENU
+    goto ADVANCEDMENU
 )
 if "%choice%"=="6" (
     echo Bye! Have a great day!
@@ -61,69 +55,84 @@ if "%choice%"=="6" (
     exit
 )
 echo Invalid choice. Please try again.
-timeout /t 1 /nobreak >nul
-goto START
+timeout /t 2 /nobreak >nul
+goto MAINMENU
 
-:game
+:GAME
 cls
+echo Welcome to the Number Guessing Game!
+set /a score=0
+:GUESSLOOP
 set /a number=%random% %% 10 + 1
 set /p guess=Guess a number between 1 and 10: 
 
 if "%guess%"=="%number%" (
-    echo You guessed it! You win!
+    echo Congratulations! You guessed it.
+    set /a score+=1
 ) else (
-    echo Sorry, the correct number was %number%. Better luck next time!
-	goto game
+    echo Sorry, the correct number was %number%.
 )
-Pause
-exit
-
-:SECONDMENU
-cls
-:: ASCII welcome message
-echo ===========================================================
-echo                   WELCOME TO AMIR'S CLI                  
-echo ===========================================================
+echo Your score: %score%
 echo.
+set /p playagain=Play again? (y/n): 
+if /i "%playagain%"=="y" goto GUESSLOOP
+if /i "%playagain%"=="n" goto MAINMENU
+echo Invalid choice. Returning to main menu.
+timeout /t 2 /nobreak >nul
+goto MAINMENU
 
-
-::Welcome Message
-echo welcome to Adv. Menu
+:ADVANCEDMENU
+cls
+call :ascii_art
+echo Welcome to the Advanced Menu!
 timeout /t 1 /nobreak >nul
 echo.
-
-
-:: second menu choices
-echo What would you like to do today?
 echo [1] Open System Info
-echo [2] Open vscdoe webp
-echo [3] Show IP Add.
+echo [2] Open VSCode Web
+echo [3] Show IP Address
 echo [4] Open Installer CLI
-echo [5] Back to previous menu
-set /p choice2=Enter your choice (1/2/3/4): 
+echo [5] Back to Previous Menu
+set /p choice2=Enter your choice (1/2/3/4/5): 
 
 if "%choice2%"=="1" (
-    systeminfo
-    timeout /t 2 /nobreak >nul
+    cls
+    echo Gathering system information...
+    timeout /t 1 /nobreak >nul
+    systeminfo | more
     pause
+    goto ADVANCEDMENU
 )
 if "%choice2%"=="2" (
     start https://vscode.dev
-    goto SECONDMENU
+    goto ADVANCEDMENU
 )
 if "%choice2%"=="3" (
-    ipconfig
+    cls
+    echo IP Configuration:
+    ipconfig | findstr "IPv4"
     pause
-    goto SECONDMENU
+    goto ADVANCEDMENU
 )
 if "%choice2%"=="4" (
-    cd installercli
-    start installer.bat
-    goto SECONDMENU
+    if exist installercli\installer.bat (
+        cd installercli
+        start installer.bat
+    ) else (
+        echo Installer CLI not found!
+        pause
+    )
+    goto ADVANCEDMENU
 )
 if "%choice2%"=="5" (
-    cls
-    goto START
+    goto MAINMENU
 )
 echo Invalid choice. Please try again.
-goto SECONDMENU
+timeout /t 2 /nobreak >nul
+goto ADVANCEDMENU
+
+:: ASCII Art Subroutine
+:ascii_art
+echo ===========================================================
+echo                   WELCOME TO AMIR'S CLI                  
+echo ===========================================================
+exit /b

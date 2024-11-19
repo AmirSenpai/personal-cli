@@ -5,6 +5,7 @@ echo ===========================================================
 echo                       Installer CLI                  
 echo ===========================================================
 echo.
+
 :START
 cls
 echo What would you like to do?
@@ -13,7 +14,8 @@ echo [1] Install Node
 echo [2] Update npm To latest Version
 echo [3] Install git {first install node}
 echo [4] Make a HTML/CSS/JS Folder
-set /p choice3=Enter Your Choice (1/2/3):
+echo [5] Install Python
+set /p choice3=Enter Your Choice (1/2/3/4/5):
 
 if "%choice3%"=="1" (
    start node.msi
@@ -24,12 +26,14 @@ if "%choice3%"=="1" (
 
 if "%choice3%"=="2" (
    npm install -g npm@latest
-   echo npm has been updated to latest version
+   echo npm has been updated to the latest version
+   pause
    goto START
 )
 
 if "%choice3%"=="3" (
-    npm -g install git
+    npm install -g git
+    echo Git has been installed.
     pause
     goto START
 )
@@ -57,8 +61,17 @@ if "%choice3%"=="4" (
     goto START
 )
 
-if not "%choice3%"=="1" if not "%choice3%"=="2" if not "%choice3%"=="3" if not "%choice3%"=="4" (
-   echo Invalid choice. Please try again.
-   timeout /t 1 /nobreak >nul
-   goto START
+if "%choice3%"=="5" (
+    echo Downloading Python installer...
+    timeout /t 1 /nobreak >nul
+    curl -O https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe
+    echo Running Python installer...
+    start python-3.11.5-amd64.exe
+    echo Python installer has been started. Follow the installation process.
+    pause
+    goto START
 )
+
+echo Invalid choice. Please try again.
+timeout /t 1 /nobreak >nul
+goto START
