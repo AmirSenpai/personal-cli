@@ -35,15 +35,26 @@ if "%choice3%"=="3" (
 )
 
 if "%choice3%"=="4" (
-   cd /d "%USERPROFILE%\Desktop"
-   mkdir Html_Css_Js
-   cd Html_Css_Js
-   type nul > html.html
-   type nul > css.css
-   type nul > js.js
-   echo Folder and files have been created on Desktop.
-   timeout /t 1 /nobreak >nul
-   pause
+    set "desktopPath=%USERPROFILE%\Desktop"
+    if exist "%desktopPath%" (
+        cd /d "%desktopPath%"
+        mkdir Html_Css_Js
+        cd Html_Css_Js
+        type nul > html.html
+        type nul > css.css
+        type nul > js.js
+        echo Folder and files have been created on Desktop.
+        timeout /t 1 /nobreak >nul
+    ) else (
+        echo Could not locate Desktop. Creating folder in the current directory.
+        mkdir Html_Css_Js
+        cd Html_Css_Js
+        type nul > html.html
+        type nul > css.css
+        type nul > js.js
+    )
+    pause
+    goto START
 )
 
 if not "%choice3%"=="1" if not "%choice3%"=="2" if not "%choice3%"=="3" if not "%choice3%"=="4" (
