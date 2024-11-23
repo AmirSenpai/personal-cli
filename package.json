@@ -1,11 +1,27 @@
 {
-  "name": "personal_cli",
+  "name": "personal-cli",
   "version": "3.0.1",
-  "description": "A personal cli for updating/installing packages and apps, system information and ...",
-  "main": "index.js",
+  "description": "A personal CLI for managing updates, installing packages and apps, accessing system information, and more.",
+  "main": "CLI_Runner.bat",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "start CLI_Runner.bat",
+    "test": "echo \"Testing is not implemented yet\""
   },
+  "keywords": [
+    "CLI",
+    "batch",
+    "automation",
+    "personal",
+    "tools"
+  ],
   "author": "AmirSenpai",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AmirSenpai/personal-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/AmirSenpai/personal-cli/issues"
+  },
+  "homepage": "https://github.com/AmirSenpai/personal-cli#readme"
 }
