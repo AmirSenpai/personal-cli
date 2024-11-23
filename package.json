@@ -1,6 +1,6 @@
 {
   "name": "personal-cli",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A personal CLI for managing updates, installing packages and apps, accessing system information, and more.",
   "main": "CLI_Runner.bat",
   "scripts": {
